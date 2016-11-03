@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact Manager</title>
+    <link href="lib/foundation/css/foundation.css" rel="stylesheet">
+    <link href="app/css/main.css" rel="stylesheet">
+  </head>
+  <body>
+    <header class="bs-header">
+      <div class="container">
+        <h1>Contact Manager</h1>
+        <p>Backbonejs Rollodex Application</p>
+      </div>
+    </header>
+    <div class="container">
+      <div class="r">
+        <div class="col-xs-12 main-container">
+        </div>
+      </div>
+    </div>
+
+    <script type="text/template" id="tpl-contacts">
+      <h2 class="page-header text-center">List of contacts</h2>
+      <p class="text-center">
+        <a href="#contacts/new" class="btn btn-lg btn-outline">Add Contact</a>
+      </p>
+      <ul class="media-list media-list row small-up-1 medium-up-2 large-up-4 contacts-container "></ul>
+    </script>
+
+    <script type="text/template" id="tpl-contact">
+      <div class="thumbnail">
+        <img class="media-object" src="app/img/faces/<%- avatar %>">
+      </div>
+      <div class="media-heading">
+        <h3>
+          <%- name %>
+          <small>
+            <a href="#contacts/edit/<%- id %>"><span class="glyphicon glyphicon-pencil"><img src="images/edit-file.png" width="25px" ></span></a>
+            <a href="#contacts/delete/<%- id %>" class="delete-contract">
+              <span class="glyphicon glyphicon-trash"><img src="images/waste-bin.png" width="25px" ></span>
+            </a>
+          </small>
+        </h3>
+      </div>
+      <div class="media-body">
+        <dl>
+          <dt>Phone Number:</dt>
+          <dd><%- tel %></dd>
+          <dt>Email:</dt>
+          <dd><%- email %></dd>
+        </dl>
+      </div>
+      <hr>
+    </script>
+
+    <script type="text/template" id="tpl-new-contact">
+      <h2 class="page-header text-center"><%= isNew ? 'Create' : 'Edit' %> Contact</h2>
+      <form role="form" class="form-horizontal contract-form">
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Full name:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control contact-name-input" value="<%- name %>">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Email address:</label>
+          <div class="col-sm-6">
+            <input type="email" class="form-control contact-email-input" value="<%- email %>">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Telephone number:</label>
+          <div class="col-sm-6">
+            <input type="tel" class="form-control contact-tel-input" value="<%- tel %>">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-4 col-sm-3">
+            <button type="submit" class="btn btn-outline btn-lg btn-block">Submit</button>
+          </div>
+          <div class="col-sm-3">
+            <a href="#contacts" class="btn btn-outline btn-lg btn-block">Cancel</a>
+          </div>
+        </div>
+      </form>
+    </script>
+    <!-- Library Code -->
+    <script src="lib/jquery/jquery-3.1.1.js"></script>
+    <script src="lib/underscore/underscore.js"></script>
+    <script src="lib/backbone/backbone.js"></script>
+
+    <!-- Application Backbone Code -->
+    <script src="app/js/app.js"></script>
+
+    <script src="app/js/models/contact.js"></script>
+    <script src="app/js/collections/contacts.js"></script>
+    <script src="app/js/views/contact.js"></script>
+    <script src="app/js/views/contacts.js"></script>
+    <script src="app/js/views/contactForm.js"></script>
+    <script src="app/js/router/router.js"></script>
+
+  </body>
+</html>
