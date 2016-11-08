@@ -4,8 +4,9 @@ window.ContactManager = {
   Views: {},
 
   start: function(data) {
-    var contacts = new ContactManager.Collections.Contacts(data.contacts),
+    var contacts = new ContactManager.Collections.Contacts(),
         router = new ContactManager.Router();
+    contacts.fetch();
 
     router.on('route:home', function() {
       router.navigate('contacts', {
@@ -28,8 +29,10 @@ window.ContactManager = {
       });
 
       newContactForm.on('form:submitted', function(attrs) {
-        attrs.id = contacts.isEmpty() ? 1 : (_.max(contacts.pluck('id')) + 1);
-        contacts.add(attrs);
+        //attrs.id = contacts.isEmpty() ? 1 : (_.max(contacts.pluck('id')) + 1);
+        contact = new ContactManager.Models.Contact(attrs);
+        contact.save();
+        contacts.add(contact);
         router.navigate('contacts', true);
       });
 
@@ -47,6 +50,10 @@ window.ContactManager = {
 
         editContactForm.on('form:submitted', function(attrs) {
           contact.set(attrs);
+          var result = contact.save(attrs, {success: function(task) {
+            //todos.fetch();
+          }, put: true, wait: true });
+
           router.navigate('contacts', true);
         });
 

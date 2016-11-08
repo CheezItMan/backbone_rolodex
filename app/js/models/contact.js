@@ -7,7 +7,11 @@ ContactManager.Models.Contact = Backbone.Model.extend({
      email: "John@davies.com",
      avatar: null
   },
-  initialize: function() {
-    this.set('avatar', _.random(1, 15) + '.jpg');
-  }
+  url: function() {
+  if (this.has ("id"))
+    return 'http://localhost:3000/contacts/' + this.get("id");
+  else {
+    return 'http://localhost:3000/contacts/';
+    }
+}
 });

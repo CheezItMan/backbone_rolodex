@@ -20,5 +20,6 @@ onClickDelete: function(e) {
   e.preventDefault();
   console.log('Delete');
   this.model.collection.remove(this.model);
+  this.model.destroy();
 }
 });

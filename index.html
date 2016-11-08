@@ -32,11 +32,11 @@
 
     <script type="text/template" id="tpl-contact">
       <div class="thumbnail">
-        <img class="media-object" src="app/img/faces/<%- avatar %>">
+        <img class="media-object" src="<%- avatar %>">
       </div>
       <div class="media-heading">
         <h3>
-          <%- name %>
+          <%- name %> - <%- id %>
           <small>
             <a href="#contacts/edit/<%- id %>"><span class="glyphicon glyphicon-pencil"><img src="images/edit-file.png" width="25px" ></span></a>
             <a href="#contacts/delete/<%- id %>" class="delete-contract">
